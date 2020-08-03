@@ -1,11 +1,11 @@
 public class BowlingGame {
-    static int maxFrameNum = 10;
-    int score = 0;
-    int curFrameNum = 1, curFrameScore = 0, curFrameThrowTimes = 0;
-    int[] extraAdding = {0,0,0};
+    final static int maxFrameNum = 10;
+    int scoreOfMatch = 0;
+    int curFrameNo = 1, curFrameScore = 0, curFrameThrowTimes = 0;
+    int[] extraAdding = {0, 0, 0}; // extraAdding of current Bowling, next Bowling, next next Bowling
 
     public void Bowling(int hitDownNumber) {
-        if (curFrameNum > maxFrameNum) {
+        if (curFrameNo > maxFrameNum) {
             return;
         }
         curFrameThrowTimes++;
@@ -14,35 +14,35 @@ public class BowlingGame {
         extraAdding[2] = 0;
 
         if (extraAdding[0] != 0) {
-            this.score += hitDownNumber * extraAdding[0];
+            this.scoreOfMatch += hitDownNumber * extraAdding[0];
         }
 
-        this.score += hitDownNumber;
+        this.scoreOfMatch += hitDownNumber;
         curFrameScore += hitDownNumber;
-        if (curFrameNum != 10) {
+        if (curFrameNo != 10) {
             if (curFrameThrowTimes == 2) {
                 if (curFrameScore == 10) {
                     extraAdding[1]++;
                 }
-                curFrameNum++;
-                curFrameScore = 0;
-                curFrameThrowTimes = 0;
+                goToNextFrame();
             } else if (curFrameScore == 10) {
                 extraAdding[1]++;
                 extraAdding[2]++;
-
-                curFrameNum++;
-                curFrameScore = 0;
-                curFrameThrowTimes = 0;
+                goToNextFrame();
             }
         } else {
             if (curFrameThrowTimes == 3) {
-                curFrameNum++;
+                curFrameNo++;
             }
         }
     }
 
+    private void goToNextFrame(){
+        curFrameNo++;
+        curFrameScore = 0;
+        curFrameThrowTimes = 0;
+    }
     public int getScore() {
-        return this.score;
+        return this.scoreOfMatch;
     }
 }
