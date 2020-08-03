@@ -19,21 +19,16 @@ when throw
 then 整局分数
 
 ## 5
-given 带有补中和全中情况下的整场击球
-when throw
-then 整局分数
-
-## 6
 given 第10局第一投全中情况下的整场击球
 when throw
 then 整局分数
 
-## 7
+## 6
 given 第10局第二投补中情况下的整场击球
 when throw
 then 整局分数
 
-## 8
+## 7
 given 第10局第二投没有补中情况下的整场击球
 when throw
 then 整局分数
